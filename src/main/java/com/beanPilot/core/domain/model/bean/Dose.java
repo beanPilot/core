@@ -32,7 +32,7 @@ public final class Dose {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Mahlmenge that)) return false;
+        if (!(o instanceof Dose that)) return false;
         return gram == that.gram;
     }
 

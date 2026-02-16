@@ -1,4 +1,4 @@
-package com.beanPilot.core;
+package com.beanpilot.core;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
