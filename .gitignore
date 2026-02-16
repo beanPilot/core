@@ -39,7 +39,7 @@ out/
 ### Gradle ###
 .gradle/
 gradle-app.setting
-!gradle-wrapper.jar
+!gradle/wrapper/gradle-wrapper.jar
 
 ### Build ###
 build/
@@ -47,6 +47,7 @@ target/
 !**/src/main/**/build/
 !**/src/test/**/build/
 *.jar
+!gradle/wrapper/gradle-wrapper.jar
 *.war
 *.nar
 *.ear
