@@ -117,9 +117,6 @@ class FlavorProfileTest {
         var intensity = Intensity.ofValue(5);
         var bitterness = Bitterness.ofValue(5);
 
-        // Since the constructor is private and the static factory method doesn't explicitly 
-        // handle nulls, these would result in NullPointerException at runtime
-        // This documents the expected behavior
         assertThrows(NullPointerException.class, () -> 
             FlavorProfile.of(null, intensity, bitterness));
         
