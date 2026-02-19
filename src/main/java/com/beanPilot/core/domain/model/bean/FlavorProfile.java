@@ -2,7 +2,7 @@ package com.beanpilot.core.domain.model.bean;
 
 import java.util.Objects;
 
-public class FlavorProfile {
+public final class FlavorProfile {
     
     public static final String Flavor = null;
     private final Flavor flavor;

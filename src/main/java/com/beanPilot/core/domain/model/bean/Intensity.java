@@ -2,7 +2,7 @@ package com.beanpilot.core.domain.model.bean;
 
 import java.util.Objects;
 
-public class Intensity {
+public final class Intensity {
     
     private static final int MIN_SIZE = 1;
     private static final int MAX_SIZE = 10;

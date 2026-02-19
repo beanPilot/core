@@ -2,7 +2,7 @@ package com.beanpilot.core.domain.model.bean;
 
 import java.util.Objects;
 
-public class ExtractionTime {
+public final class ExtractionTime {
     
     private final int seconds;
 
