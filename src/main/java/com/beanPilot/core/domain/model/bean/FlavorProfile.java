@@ -3,41 +3,16 @@ package com.beanpilot.core.domain.model.bean;
 import java.util.Objects;
 
 public class FlavorProfile {
-    // reference from: https://coffee-mind.com/coffeemind-aroma-wheel/
-    private enum Flavor {
-        BERRY("Beerig"),
-        FRUITY("Fruchtig"),
-        DRIED_FRUIT("Getrocknete Früchte"),
-        SWEET("Süß"),
-        CHOCOLATE("Schokolade"),
-        NUTTY("Nussig/Kakao"),
-        ROASTED("Geröstet"),
-        INDUSTRIAL("Industriell"),
-        SPICY("Würzig"),
-        CEREAL("Getreide"),
-        GREEN("Grün"),
-        HERB_VEGETAL("Kräuter/Pflanzlich"),
-        FLORAL("Blumig");
-        
-        private final String displayName;
-
-        Flavor(String displayName) {
-            this.displayName = displayName;
-        }
-
-        public String getDisplayName() {
-            return displayName;
-        }
-    }
-
+    
+    public static final String Flavor = null;
     private final Flavor flavor;
     private final Intensity intensity;
     private final Bitterness bitterness;
 
     private FlavorProfile(Flavor flavor, Intensity intensity, Bitterness bitterness) {
-        this.flavor = flavor;
-        this.intensity = intensity;
-        this.bitterness = bitterness;
+        this.flavor = Objects.requireNonNull(flavor, "flavor cannot be null");
+        this.intensity = Objects.requireNonNull(intensity, "intensity cannot be null");
+        this.bitterness = Objects.requireNonNull(bitterness, "bitterness cannot be null");
     }
 
     public static FlavorProfile of(Flavor flavor, Intensity intensity, Bitterness bitterness) {
