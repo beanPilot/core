@@ -66,7 +66,7 @@ public final class CoffeeBean {
     }
 
     // Consumes coffee from a specific package by id, enforcing invariants.
-    public void consumeFromPackage(String packageId, int grams) {
+    public void consumeFromPackage(UUID packageId, int grams) {
         CoffeePackage p = packages.stream()
                 .filter(pkg -> pkg.getId().equals(packageId))
                 .findFirst()

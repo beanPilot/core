@@ -5,14 +5,14 @@ import java.util.UUID;
 
 public class CoffeePackage {
 
-    private final String id;
+    private final UUID id;
     private final Price price;
 
     private final int initialGrams;
     private int remainingGrams;
 
     private CoffeePackage(UUID id, Price price, int grams, java.util.Date purchaseDate) {
-        this.id = Objects.requireNonNull(id, "id cannot be null").toString();
+        this.id = Objects.requireNonNull(id, "id cannot be null");
         this.price = Objects.requireNonNull(price, "price cannot be null");
 
         if (grams <= 0) throw new IllegalArgumentException("grams must be > 0");
@@ -24,7 +24,7 @@ public class CoffeePackage {
         return new CoffeePackage(UUID.randomUUID(), price, grams, purchaseDate);
     }
 
-    public String getId() { return id; }
+    public UUID getId() { return id; }
     public Price getPrice() { return price; }
     public int getInitialGrams() { return initialGrams; }
     public int getRemainingGrams() { return remainingGrams; }

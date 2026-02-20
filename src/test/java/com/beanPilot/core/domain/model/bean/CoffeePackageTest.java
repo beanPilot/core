@@ -25,7 +25,7 @@ class CoffeePackageTest {
         CoffeePackage packageObj = CoffeePackage.create(price, grams, purchaseDate);
 
         assertNotNull(packageObj.getId());
-        assertFalse(packageObj.getId().isEmpty());
+        assertFalse(packageObj.getId().toString().isBlank(), "id should not be blank");
         assertEquals(price, packageObj.getPrice());
         assertEquals(grams, packageObj.getInitialGrams());
         assertEquals(grams, packageObj.getRemainingGrams());

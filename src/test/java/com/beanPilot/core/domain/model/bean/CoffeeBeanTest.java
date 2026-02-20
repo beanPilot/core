@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
+import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -121,7 +122,7 @@ class CoffeeBeanTest {
         bean.addPackage(Price.ofValue(10.00, testDate), 250, testDate);
 
         assertThrows(IllegalArgumentException.class,
-                () -> bean.consumeFromPackage("does-not-exist", 10));
+                () -> bean.consumeFromPackage(UUID.fromString("00000000-0000-0000-0000-000000000000"), 10));
     }
 
     @Test
