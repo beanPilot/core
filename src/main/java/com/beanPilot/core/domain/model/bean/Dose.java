@@ -17,11 +17,11 @@ public final class Dose {
         this.gram = gram;
     }
 
-    public static Dose ofgram(int gram) {
+    public static Dose ofGrams(int gram) {
         return new Dose(gram);
     }
 
-    public int ingram() {
+    public int inGram() {
         return gram;
     }
 

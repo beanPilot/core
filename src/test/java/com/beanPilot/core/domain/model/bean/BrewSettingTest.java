@@ -11,7 +11,7 @@ class BrewSettingTest {
     @DisplayName("BrewSetting can be created with valid grindSize, dose, and extractionTime")
     void createsValidBrewSetting() {
         var grindSize = GrindSize.ofSize(5);
-        var dose = Dose.ofgram(18);
+        var dose = Dose.ofGrams(18);
         var extractionTime = ExtractionTime.ofSeconds(25);
         
         var brewSetting = BrewSetting.of(grindSize, dose, extractionTime);
@@ -25,11 +25,11 @@ class BrewSettingTest {
     @DisplayName("BrewSetting equality works correctly")
     void testEquality() {
         var grindSize1 = GrindSize.ofSize(5);
-        var dose1 = Dose.ofgram(18);
+        var dose1 = Dose.ofGrams(18);
         var extractionTime1 = ExtractionTime.ofSeconds(25);
         
         var grindSize2 = GrindSize.ofSize(5);
-        var dose2 = Dose.ofgram(18);
+        var dose2 = Dose.ofGrams(18);
         var extractionTime2 = ExtractionTime.ofSeconds(25);
         
         var brewSetting1 = BrewSetting.of(grindSize1, dose1, extractionTime1);
@@ -49,7 +49,7 @@ class BrewSettingTest {
     @Test
     @DisplayName("BrewSetting with different grindSize should not be equal")
     void testInequalityWithDifferentGrindSize() {
-        var dose = Dose.ofgram(18);
+        var dose = Dose.ofGrams(18);
         var extractionTime = ExtractionTime.ofSeconds(25);
         
         var brewSetting1 = BrewSetting.of(GrindSize.ofSize(5), dose, extractionTime);
@@ -64,8 +64,8 @@ class BrewSettingTest {
         var grindSize = GrindSize.ofSize(5);
         var extractionTime = ExtractionTime.ofSeconds(25);
         
-        var brewSetting1 = BrewSetting.of(grindSize, Dose.ofgram(18), extractionTime);
-        var brewSetting2 = BrewSetting.of(grindSize, Dose.ofgram(22), extractionTime);
+        var brewSetting1 = BrewSetting.of(grindSize, Dose.ofGrams(18), extractionTime);
+        var brewSetting2 = BrewSetting.of(grindSize, Dose.ofGrams(22), extractionTime);
 
         assertNotEquals(brewSetting1, brewSetting2);
     }
@@ -74,7 +74,7 @@ class BrewSettingTest {
     @DisplayName("BrewSetting with different extractionTime should not be equal")
     void testInequalityWithDifferentExtractionTime() {
         var grindSize = GrindSize.ofSize(5);
-        var dose = Dose.ofgram(18);
+        var dose = Dose.ofGrams(18);
         
         var brewSetting1 = BrewSetting.of(grindSize, dose, ExtractionTime.ofSeconds(25));
         var brewSetting2 = BrewSetting.of(grindSize, dose, ExtractionTime.ofSeconds(30));
@@ -86,7 +86,7 @@ class BrewSettingTest {
     @DisplayName("BrewSetting toString contains all properties")
     void testToString() {
         var grindSize = GrindSize.ofSize(6);
-        var dose = Dose.ofgram(20);
+        var dose = Dose.ofGrams(20);
         var extractionTime = ExtractionTime.ofSeconds(28);
         var brewSetting = BrewSetting.of(grindSize, dose, extractionTime);
 
@@ -102,7 +102,7 @@ class BrewSettingTest {
     @DisplayName("BrewSetting requires non-null parameters")
     void testNullParameterHandling() {
         var grindSize = GrindSize.ofSize(5);
-        var dose = Dose.ofgram(18);
+        var dose = Dose.ofGrams(18);
         var extractionTime = ExtractionTime.ofSeconds(25);
 
         assertThrows(NullPointerException.class, () -> 
@@ -121,7 +121,7 @@ class BrewSettingTest {
         // Test with minimum values
         var minBrewSetting = BrewSetting.of(
             GrindSize.ofSize(2), 
-            Dose.ofgram(1), 
+            Dose.ofGrams(1), 
             ExtractionTime.ofSeconds(1)
         );
         assertNotNull(minBrewSetting);
@@ -129,7 +129,7 @@ class BrewSettingTest {
         // Test with max realistic values
         var maxBrewSetting = BrewSetting.of(
             GrindSize.ofSize(10), 
-            Dose.ofgram(100), 
+            Dose.ofGrams(100), 
             ExtractionTime.ofSeconds(300)
         );
         assertNotNull(maxBrewSetting);
@@ -137,7 +137,7 @@ class BrewSettingTest {
         // Test with "typical" espresso values
         var espressoSetting = BrewSetting.of(
             GrindSize.ofSize(2), 
-            Dose.ofgram(18), 
+            Dose.ofGrams(18), 
             ExtractionTime.ofSeconds(27)
         );
         assertNotNull(espressoSetting);
@@ -145,7 +145,7 @@ class BrewSettingTest {
         // Test with typical pour-over values
         var pourOverSetting = BrewSetting.of(
             GrindSize.ofSize(6), 
-            Dose.ofgram(30), 
+            Dose.ofGrams(30), 
             ExtractionTime.ofSeconds(240)
         );
         assertNotNull(pourOverSetting);

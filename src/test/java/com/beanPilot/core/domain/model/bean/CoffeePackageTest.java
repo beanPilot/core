@@ -9,7 +9,7 @@ import java.util.Date;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-class PackageTest {
+class CoffeePackageTest {
     private final int testYear = 2024;
     private final int testMonth = 2;
     private final int testDay = 19;
@@ -19,10 +19,10 @@ class PackageTest {
     @DisplayName("Package can be created with valid price, grams, and purchase date")
     void createsValidPackage() {
         var purchaseDate = testDate;
-        var price = Price.of(24.50, purchaseDate);
+        var price = Price.ofValue(24.50, purchaseDate);
         var grams = 250;
         
-        Package packageObj = Package.create(price, grams, purchaseDate);
+        CoffeePackage packageObj = CoffeePackage.create(price, grams, purchaseDate);
 
         assertNotNull(packageObj.getId());
         assertFalse(packageObj.getId().isEmpty());
@@ -37,11 +37,11 @@ class PackageTest {
     @DisplayName("Package generates unique IDs")
     void generatesUniqueIds() {
         var purchaseDate = testDate;
-        var price = Price.of(20.00, purchaseDate);
+        var price = Price.ofValue(20.00, purchaseDate);
         var grams = 500;
         
-        Package package1 = Package.create(price, grams, purchaseDate);
-        Package package2 = Package.create(price, grams, purchaseDate);
+        CoffeePackage package1 = CoffeePackage.create(price, grams, purchaseDate);
+        CoffeePackage package2 = CoffeePackage.create(price, grams, purchaseDate);
 
         assertNotEquals(package1.getId(), package2.getId());
     }
@@ -50,10 +50,10 @@ class PackageTest {
     @DisplayName("Package consume reduces remaining grams")
     void consumeReducesRemainingGrams() {
         var purchaseDate = testDate;
-        var price = Price.of(30.00, purchaseDate);
+        var price = Price.ofValue(30.00, purchaseDate);
         var initialGrams = 1000;
         var consumeAmount = 200;
-        Package packageObj = Package.create(price, initialGrams, purchaseDate);
+        CoffeePackage packageObj = CoffeePackage.create(price, initialGrams, purchaseDate);
 
         packageObj.consume(consumeAmount);
 
@@ -66,9 +66,9 @@ class PackageTest {
     @DisplayName("Package isEmpty returns true when all grams consumed")
     void isEmptyWhenAllGramsConsumed() {
         var purchaseDate = testDate;
-        var price = Price.of(15.00, purchaseDate);
+        var price = Price.ofValue(15.00, purchaseDate);
         var grams = 100;
-        Package packageObj = Package.create(price, grams, purchaseDate);
+        CoffeePackage packageObj = CoffeePackage.create(price, grams, purchaseDate);
 
         packageObj.consume(grams);
 
@@ -80,9 +80,9 @@ class PackageTest {
     @DisplayName("Package consume multiple times works correctly")
     void consumeMultipleTimes() {
         var purchaseDate = testDate;
-        var price = Price.of(25.00, purchaseDate);
+        var price = Price.ofValue(25.00, purchaseDate);
         var initialGrams = 500;
-        Package packageObj = Package.create(price, initialGrams, purchaseDate);
+        CoffeePackage packageObj = CoffeePackage.create(price, initialGrams, purchaseDate);
 
         packageObj.consume(100);
         assertEquals(400, packageObj.getRemainingGrams());
@@ -99,21 +99,21 @@ class PackageTest {
     @DisplayName("Package creation throws IllegalArgumentException for invalid grams")
     void rejectsInvalidGrams() {
         var purchaseDate = testDate;
-        var price = Price.of(20.00, purchaseDate);
+        var price = Price.ofValue(20.00, purchaseDate);
 
         assertThrows(IllegalArgumentException.class, () -> 
-            Package.create(price, 0, purchaseDate));
+            CoffeePackage.create(price, 0, purchaseDate));
         
         assertThrows(IllegalArgumentException.class, () -> 
-            Package.create(price, -100, purchaseDate));
+            CoffeePackage.create(price, -100, purchaseDate));
     }
 
     @Test
     @DisplayName("Package consume throws IllegalArgumentException for invalid amounts")
     void consumeRejectsInvalidAmounts() {
         var purchaseDate = testDate;
-        var price = Price.of(20.00, purchaseDate);
-        Package packageObj = Package.create(price, 250, purchaseDate);
+        var price = Price.ofValue(20.00, purchaseDate);
+        CoffeePackage packageObj = CoffeePackage.create(price, 250, purchaseDate);
 
         assertThrows(IllegalArgumentException.class, () -> 
             packageObj.consume(0));
@@ -126,8 +126,8 @@ class PackageTest {
     @DisplayName("Package consume throws IllegalArgumentException when consuming more than remaining")
     void consumeRejectsTooMuchConsumption() {
         var purchaseDate = testDate;
-        var price = Price.of(20.00, purchaseDate);
-        Package packageObj = Package.create(price, 100, purchaseDate);
+        var price = Price.ofValue(20.00, purchaseDate);
+        CoffeePackage packageObj = CoffeePackage.create(price, 100, purchaseDate);
 
         assertThrows(IllegalArgumentException.class, () -> 
             packageObj.consume(101));
@@ -144,22 +144,22 @@ class PackageTest {
         var grams = 250;
 
         assertThrows(NullPointerException.class, () -> 
-            Package.create(null, grams, purchaseDate));
+            CoffeePackage.create(null, grams, purchaseDate));
     }
 
     @Test
     @DisplayName("Package can handle typical coffee bag sizes")
     void testTypicalCoffeeBagSizes() {
         var purchaseDate = testDate;
-        var price = Price.of(12.50, purchaseDate);
+        var price = Price.ofValue(12.50, purchaseDate);
 
-        Package smallBag = Package.create(price, 250, purchaseDate);
+        CoffeePackage smallBag = CoffeePackage.create(price, 250, purchaseDate);
         assertEquals(250, smallBag.getInitialGrams());
         
-        Package standardBag = Package.create(price, 500, purchaseDate);
+        CoffeePackage standardBag = CoffeePackage.create(price, 500, purchaseDate);
         assertEquals(500, standardBag.getInitialGrams());
         
-        Package largeBag = Package.create(price, 1000, purchaseDate);
+        CoffeePackage largeBag = CoffeePackage.create(price, 1000, purchaseDate);
         assertEquals(1000, largeBag.getInitialGrams());
         
         assertFalse(smallBag.isEmpty());

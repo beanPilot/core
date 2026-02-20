@@ -15,7 +15,7 @@ public final class Price {
         this.purchaseDate = Objects.requireNonNull(purchaseDate, "purchaseDate cannot be null");
     }
 
-    public static Price of(double price, java.util.Date purchaseDate) {
+    public static Price ofValue(double price, java.util.Date purchaseDate) {
         return new Price(price, purchaseDate);
     }
 

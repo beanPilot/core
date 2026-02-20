@@ -1,10 +1,9 @@
 package com.beanpilot.core.domain.model.bean;
 
-import java.time.LocalDate;
 import java.util.Objects;
 import java.util.UUID;
 
-public class Package {
+public class CoffeePackage {
 
     private final String id;
     private final Price price;
@@ -12,7 +11,7 @@ public class Package {
     private final int initialGrams;
     private int remainingGrams;
 
-    private Package(UUID id, Price price, int grams, java.util.Date purchaseDate) {
+    private CoffeePackage(UUID id, Price price, int grams, java.util.Date purchaseDate) {
         this.id = Objects.requireNonNull(id, "id cannot be null").toString();
         this.price = Objects.requireNonNull(price, "price cannot be null");
 
@@ -21,8 +20,8 @@ public class Package {
         this.remainingGrams = grams;
     }
 
-    public static Package create(Price price, int grams, java.util.Date purchaseDate) {
-        return new Package(UUID.randomUUID(), price, grams, purchaseDate);
+    public static CoffeePackage create(Price price, int grams, java.util.Date purchaseDate) {
+        return new CoffeePackage(UUID.randomUUID(), price, grams, purchaseDate);
     }
 
     public String getId() { return id; }
