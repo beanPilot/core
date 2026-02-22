@@ -11,7 +11,7 @@ import java.util.UUID;
 import static org.junit.jupiter.api.Assertions.*;
 
 class CoffeeBeanTest {
-    private final int testYear = 2024;
+    private final int testYear = 2026;
     private final int testMonth = 2;
     private final int testDay = 19;
     private final java.util.Date testDate = Date.from(LocalDate.of(testYear, testMonth, testDay).atStartOfDay(ZoneId.systemDefault()).toInstant());

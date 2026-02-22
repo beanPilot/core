@@ -10,8 +10,8 @@ public final class GrindSize {
     private final int size;
 
     private GrindSize(int size) {
-        if (size <= MIN_SIZE) {
-            throw new IllegalArgumentException("Grind size must be greater than " + MIN_SIZE + ", was: " + size);
+        if (size < MIN_SIZE) {
+            throw new IllegalArgumentException("Grind size must be at least " + MIN_SIZE + ", was: " + size);
         }
         if (size > MAX_SIZE) {
             throw new IllegalArgumentException("Grind size too high (max " + MAX_SIZE + "), was: " + size);
